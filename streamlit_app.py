@@ -94,7 +94,7 @@ def build_index(chunks):
     index.add(embeddings)
     return index
 
-def retrieve(query, index, chunks, top_k=5):
+def retrieve(query, index, chunks, top_k=10):
     scores, idxs = index.search(embed([query]), top_k)
     return [
         {
@@ -234,12 +234,12 @@ Format:
  Sources: Chunk #X, Chunk #Y | Rules: [Rule N]"""
 
 def qa_agent(query, doc):
-    retrieved = retrieve(query, doc["index"], doc["chunks"], top_k=5)
+    retrieved = retrieve(query, doc["index"], doc["chunks"], top_k=10)
     if not retrieved:
         return "No relevant information found."
 
     top_score = retrieved[0]["score"]
-    if top_score < 0.20:
+    if top_score < 0.05:
         return (
             "The retrieved context has low confidence. "
             "Please specify the document or rephrase the question."
@@ -357,20 +357,13 @@ def route_query(query, doc):
 
         target_doc = find_document(query, doc)
 
-        if target_doc:
+        if target_doc is None:
 
-            if target_doc not in doc["summary"]:
+            if len(doc["documents"]) == 1:
 
-                doc["summary"][target_doc] = summary_agent(
-                    doc,
-                    target_doc
+                target_doc = next(
+                    iter(doc["documents"])
                 )
-
-            return (
-                "summary",
-                doc["summary"][target_doc]
-            )
-
         if not target_doc:
 
             docs = "\n".join(
