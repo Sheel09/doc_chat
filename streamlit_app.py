@@ -511,7 +511,7 @@ def route_and_respond(query, doc):
 # ══════════════════════════════════════════════════════════════════════════════
 
 st.set_page_config(page_title="Agentic RAG", page_icon="🤖", layout="wide")
-st.title("🤖 Agentic RAG")
+st.title("🤖 DOCUMENT CHAT
 st.caption("Planner → Query Expansion → Retrieval → Reranking → Specialized Agents → Response Composer")
 
 # Session state
