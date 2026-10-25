@@ -26,9 +26,13 @@ import faiss
 # ║  Only edit this block to swap providers / models                        ║
 # ╚══════════════════════════════════════════════════════════════════════════╝
 
-BASE_URL = "https://api.openai.com/v1"
-MODEL    = "gpt-4o-mini"
-API_KEY  = os.environ.get("OPENAI_API_KEY", "")
+BASE_URL = "https://api.tokenrouter.io/v1"
+MODEL = "deepseek/deepseek-v4.1-flash-1017"
+API_KEY = os.environ.get("TOKENROUTER_API_KEY", "")
+
+# BASE_URL = "https://api.openai.com/v1"
+# MODEL    = "gpt-4o-mini"
+# API_KEY  = os.environ.get("OPENAI_API_KEY", "")
 
 # Groq:     BASE_URL = "https://api.groq.com/openai/v1"  | MODEL = "llama3-8b-8192"
 # Together: BASE_URL = "https://api.together.xyz/v1"      | MODEL = "mistralai/Mistral-7B-Instruct-v0.2"
