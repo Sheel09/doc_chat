@@ -55,7 +55,7 @@ TOP_K = {
 @st.cache_resource
 def get_client():
     from openai import OpenAI
-    key = st.secrets.get("OPENAI_API_KEY", API_KEY)
+    key = st.secrets.get("OPENROUTER_API_KEY", API_KEY)
     return OpenAI(api_key=key, base_url=BASE_URL)
 
 def llm(system, user, temperature=0.2):
