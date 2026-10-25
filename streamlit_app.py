@@ -28,7 +28,7 @@ import faiss
 
 BASE_URL = "https://openrouter.ai/api/v1"
 MODEL = "deepseek/deepseek-v4.1-flash-1017"
-API_KEY = os.eniron.get("OPENROUTER_API_KEY","")
+API_KEY = os.environ.get("OPENROUTER_API_KEY","")
 
 # BASE_URL = "https://api.openai.com/v1"
 # MODEL    = "gpt-4o-mini"
